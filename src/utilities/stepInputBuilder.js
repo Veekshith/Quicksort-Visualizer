@@ -245,7 +245,7 @@ const stepInputBuilder = arr => {
     stepObj.list = [...arr];
     formStep(stepObj);
   };
-  function formStep(input) {
+  const formStep = (input)=> {
     let stepInput = lodash.cloneDeep(input);
     let stepObj = {};
     let modifiedStepStates = defaultStepStates;
