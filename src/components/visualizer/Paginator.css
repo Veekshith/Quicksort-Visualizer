@@ -1,0 +1,15 @@
+.card-footer .pagination {
+  min-height: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+li.page-item {
+  display: flex;
+  justify-content: center;
+}
+
+li.page-item .page-link {
+  font-size: 1.25rem;
+}

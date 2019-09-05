@@ -1,0 +1,7 @@
+.visualizerFooter.card-footer, .visualizerFooter.card-footer * {
+    display:flex;
+    justify-content: center;
+}
+.visualizerFooter.card-footer * {
+    flex: .4 1 auto;
+}
