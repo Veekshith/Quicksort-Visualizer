@@ -22,18 +22,12 @@ const stepInputBuilder = arr => {
         stepObj.name =
           "Here is a visualization of the entire Quicksort process.";
         stepObj.changedElements = [];
-        stepObj.list = [...arr];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        formStep(stepObj);
         break;
       }
 
       case "sort_left_sublist": {
         stepObj.name = "Sorting left sublist";
         stepObj.changedElements = [];
-        stepObj.list = [...arr];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        formStep(stepObj);
         break;
       }
 
@@ -47,9 +41,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markSorted", value: true }]
           });
         }
-        stepObj.list = [...arr];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        formStep(stepObj);
         break;
       }
 
@@ -64,18 +55,12 @@ const stepInputBuilder = arr => {
             ]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
       case "partitioning": {
         stepObj.name = "Partioning started";
         stepObj.changedElements = [];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -87,9 +72,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markLeftArrow", value: true }]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -105,9 +87,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markRightArrow", value: false }]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -123,9 +102,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markRightArrow", value: false }]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -133,9 +109,6 @@ const stepInputBuilder = arr => {
         stepObj.name =
           "compare until right pointer is less than pivot  then swap right and left  pointers";
         stepObj.changedElements = [];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -151,9 +124,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markSelected", value: true }]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -175,9 +145,6 @@ const stepInputBuilder = arr => {
             ]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
 
       case "move_left_pointer": {
@@ -193,9 +160,6 @@ const stepInputBuilder = arr => {
               changedStates: [{ name: "markLeftArrow", value: false }]
             }
           ];
-          stepObj.uniqueKeys = [...uniqueKeys];
-          stepObj.list = [...arr];
-          formStep(stepObj);
           break;
         }
       }
@@ -216,9 +180,6 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markSelected", value: true }]
           }
         ];
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
 
@@ -255,9 +216,6 @@ const stepInputBuilder = arr => {
               { name: "markRightArrow", value: false }
             ]
           });
-          stepObj.uniqueKeys = [...uniqueKeys];
-          stepObj.list = [...arr];
-          formStep(stepObj);
         } else {
           stepObj.changedElements.push({
             index: changedElements[1],
@@ -266,9 +224,6 @@ const stepInputBuilder = arr => {
               { name: "markRightArrow", value: false }
             ]
           });
-          stepObj.uniqueKeys = [...uniqueKeys];
-          stepObj.list = [...arr];
-          formStep(stepObj);
         }
         break;
       }
@@ -281,33 +236,33 @@ const stepInputBuilder = arr => {
             changedStates: [{ name: "markSorted", value: true }]
           });
         });
-        stepObj.uniqueKeys = [...uniqueKeys];
-        stepObj.list = [...arr];
-        formStep(stepObj);
         break;
       }
       default: {
       }
     }
-    function formStep(input) {
-      let stepInput = lodash.cloneDeep(input);
-      let stepObj = {};
-      let modifiedStepStates = defaultStepStates;
-      if (stepInput.changedElements.length) {
-        stepInput.changedElements.map(ele => {
-          ele.changedStates.map(state => {
-            modifiedStepStates[ele.index][state.name] = state.value;
-          });
-        });
-      }
-      stepObj.name = stepInput.name;
-      stepObj.elementStates = lodash.cloneDeep(modifiedStepStates);
-      stepObj.listGlance = stepInput.list;
-      stepObj.uniqueKeys = stepInput.uniqueKeys;
-
-      steps.push(stepObj);
-    }
+    stepObj.uniqueKeys = [...uniqueKeys];
+    stepObj.list = [...arr];
+    formStep(stepObj);
   };
+  function formStep(input) {
+    let stepInput = lodash.cloneDeep(input);
+    let stepObj = {};
+    let modifiedStepStates = defaultStepStates;
+    if (stepInput.changedElements.length) {
+      stepInput.changedElements.map(ele => {
+        ele.changedStates.map(state => {
+          modifiedStepStates[ele.index][state.name] = state.value;
+        });
+      });
+    }
+    stepObj.name = stepInput.name;
+    stepObj.elementStates = lodash.cloneDeep(modifiedStepStates);
+    stepObj.listGlance = stepInput.list;
+    stepObj.uniqueKeys = stepInput.uniqueKeys;
+
+    steps.push(stepObj);
+  }
   const getSteps = () => {
     return steps;
   };
