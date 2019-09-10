@@ -2,7 +2,6 @@ import mockSteps from "./mockSteps";
 import StepInputBuilder from './stepInputBuilder';
 import UniqueKeysBuilder from './uniqueKeyBuilder';
 import lodash from "lodash";
-import stepInputBuilder from "./stepInputBuilder";
 
 describe("StepInputBuilder", () => {
     let uniqueKeyBuilder = UniqueKeysBuilder();
