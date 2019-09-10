@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
-import Input from "../input/Input";
-import Visualizer from "../visualizer/Visualizer";
-import store from "../../store";
+import Input from "./inputHandler/Input";
+import Visualizer from "./visualizer/Visualizer";
+import store from "../store";
 import lodash from "lodash";
 import "./App.css";
 
@@ -14,6 +14,9 @@ export default class App extends Component {
   shouldComponentUpdate(props, state) {
     if (!lodash.isEqual(this.state.steps, store.getState().steps.steps)) {
       return true;
+    }
+    else {
+      return false;
     }
   }
 

@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-import sortList from "../../actions/sortAction";
+import sortList from "../stepMaker/sortAction";
 import "./Input.css";
 
 const Input = props => {
@@ -70,12 +70,12 @@ const Input = props => {
     </Card>
   );
 };
-const mapStateToProps = state => ({
-  // sortedList: state.output.sortedList
-  sortedList: state.steps.steps
-});
+// const mapStateToProps = state => ({
+//   // sortedList: state.output.sortedList
+//   sortedList: state.steps.steps
+// });
 
 export default connect(
-  mapStateToProps,
+  null,
   { sortList }
 )(Input);

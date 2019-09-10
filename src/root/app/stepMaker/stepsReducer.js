@@ -1,4 +1,4 @@
-import { STEPS_ACTION } from "../actions/types";
+import { STEPS_ACTION } from "../stepMaker/types";
 
 const initialState = { steps: [] };
 export default function(state = initialState, action) {
